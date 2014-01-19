@@ -16,6 +16,8 @@ public:
 	:saveTo(false)
 	,id(nextID++){};
 
+	ofHttpRequest( ofHttpRequest&& ) noexcept = default;
+
 	ofHttpRequest(string url,string name,bool saveTo=false)
 	:url(url)
 	,name(name)
@@ -37,13 +39,13 @@ public:
 	ofHttpResponse(){}
 
 	ofHttpResponse(ofHttpRequest request,const ofBuffer & data,int status, string error)
-	:request(request)
+	:request( move(request) )
 	,data(data)
 	,status(status)
 	,error(error){}
 
 	ofHttpResponse(ofHttpRequest request,int status,string error)
-	:request(request)
+	:request( move(request) )
 	,status(status)
 	,error(error){}
 
