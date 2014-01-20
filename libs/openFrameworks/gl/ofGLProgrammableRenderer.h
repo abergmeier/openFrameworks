@@ -16,7 +16,7 @@ class ofVbo;
 class ofGLProgrammableRenderer: public ofBaseGLRenderer{
 public:
 	ofGLProgrammableRenderer(bool useShapeColor=true);
-	~ofGLProgrammableRenderer();
+	~ofGLProgrammableRenderer() noexcept = default;
 
 	void setup();
 
